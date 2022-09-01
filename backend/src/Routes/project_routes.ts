@@ -3,7 +3,7 @@ import { VerifyToken } from "./../Middlewares/verify";
 import { getProjects,getProject,createProject, updateProject,deleteProject, } from "../Controllers/project";
 const routers = Router();
 
-routers.post("/create",VerifyToken, createProject);
+routers.post("/create", createProject);
 routers.get("/all", getProjects);
 routers.get("/:id", getProject);
 routers.patch("/:id", updateProject);

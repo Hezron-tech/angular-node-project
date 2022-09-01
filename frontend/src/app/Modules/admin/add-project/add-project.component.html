@@ -1,0 +1,58 @@
+
+<div class="main">
+
+    <form [formGroup]="projectForms" (ngSubmit)="addProject()">
+      
+      <div class="form-control">
+          <p>Title</p>
+        <input  type="text" formControlName="name" name="name" >
+
+       <div *ngIf="!projectForms.get('name')!.valid && projectForms.get('name')!.touched">
+        <p class="error" *ngIf="projectForms.get('name')!.errors!['required']">
+          *Name is required.
+        </p> 
+      </div>
+      
+       </div>
+
+<div class="form-control">
+        <p>Description</p>
+        <textarea formControlName="description" name="" id="" cols="30" rows="10" name="description">
+          <div *ngIf="!projectForms.get('description')!.valid && projectForms.get('description')!.touched">
+            <p class="error" *ngIf="projectForms.get('description')!.errors!['required']">
+              *description is required.
+            </p> 
+          </div>
+        </textarea>
+        <!-- <input type="description" formControlName="description" name="description"> -->
+
+        
+    </div>
+    <div class="form-control">
+        <p>End Date</p>
+        <input type="date" formControlName="date" name="date"/>
+    </div>
+
+    <div class="form-control">
+      <p for="">Assign project</p>
+      <select formControlName="user_id">
+        <option *ngFor="let u of user$ | async" value="{{u.user_id}}">{{u.email}}</option>
+      </select>
+     
+    </div> <br> <pre></pre>
+
+
+    <button type="submit">Add Project</button>
+
+
+
+
+
+
+    </form>
+
+
+
+
+
+</div>

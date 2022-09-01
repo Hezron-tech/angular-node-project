@@ -1,0 +1,15 @@
+
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+    font-size: 20px;
+    
+    color: white;
+    background-color: brown;
+}
+
+.list{
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+}
