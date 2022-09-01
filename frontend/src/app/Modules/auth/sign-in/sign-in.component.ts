@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
@@ -9,8 +10,7 @@ import { LoginService } from 'src/app/Services/login.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  email!:string
-  password!:string
+ 
 
 
   @ViewChild ('form') form!:NgForm;
@@ -21,62 +21,89 @@ export class SignInComponent implements OnInit {
 
   onSubmit(){
     console.log(this.form.value);
-    const user=this.form.value
+    this.loginService.loginUser(this.form.value).subscribe(response=>{
 
-    this.loginService.login(user).subscribe(
+      localStorage.setItem('token',response.token)
 
-      (response)=>{
-        console.log(response);
-        response.token? localStorage.setItem('token',response.token): ''
+      console.log(response);
+      
 
-        this.redirect()
+      console.log(response.user.Role);
+      
+      if(response.user.Role==='Admin'){
+        this.router.navigate(['/admin/dashboard'])
+
+      }
+      else{
+        this.router.navigate(['/user/user-dashboard'])
+      }
+      
+     
+      
+    })
+
+
+
+
+
+    // console.log(this.loginService.checkUser());
+    
+    // const user=this.form.value
+
+    // this.loginService.login(user).subscribe(
+
+    //   (response)=>{
+    //     console.log(response);
+    //     response.token? localStorage.setItem('token',response.token): ''
+
+        
          
-      },
-      (error)=>console.log(error),
-      ()=>console.log('succesfully log in')
+    //   },
+    //   (error)=>console.log(error),
+    //   ()=>console.log('succesfully log in')
       
       
-    )
+    // )
     
 
   }
-  redirect(){
+  // redirect(){
 
-    const token = localStorage.getItem('token') as string
+  //   const token = localStorage.getItem('token') as string
 
-    this.loginService.checkUser().subscribe(
+  //   this.loginService.checkUser().subscribe(
 
-      (response)=>{
+  //     (response)=>{
 
-        console.log(response);
+  //       console.log(response);
 
-        localStorage.setItem('name', response.username)
+  //       localStorage.setItem('name', response.username)
 
-        localStorage.setItem('email', response.email)
+  //       localStorage.setItem('email', response.email)
 
-        localStorage.setItem('role', response.Role)
-
-
-
-        if (response.Role === 'admin') {
-
-          this.router.navigate(['/admin/dashboard'])
+  //       localStorage.setItem('role', response.Role)
 
 
 
-      } else {
+  //       if (response.Role === 'admin') {
 
-        this.router.navigate(['/user/user-dashboard'])
+  //         this.router.navigate(['/admin/dashboard'])
 
-      }
+
+
+  //     } else {
+
+  //       this.router.navigate(['/user/user-dashboard'])
+
+  //     }
 
         
 
-      }
+  //     }
 
-    )
+  //   )
 
-  }
+  // }
   
 
 }

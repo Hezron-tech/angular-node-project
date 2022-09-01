@@ -8,29 +8,26 @@ import { Login } from '../Interfaces/user';
 })
 export class LoginService {
 
-  loginUrl='http://localhost:5000/users/login'
+  loginUrl='http://localhost:5000/users/'
   checkuser='http://localhost:5000/users/checkuser'
-  constructor(private http:HttpClient) { }
 
-  login(user:Login):Observable<Login>{
-    return this.http.post<Login>(`${this.loginUrl}`,user)
-  }
-
-   checkUser():Observable<{username:string,Role:string, email:string}>{
-    const token=localStorage.getItem('token') as string
-    return this.http.get<{username:string,Role:string, email:string}>(`${this.checkuser}`);{
-      headers:new HttpHeaders({token})
-
+  private httpOptions:any
+  
+  constructor( private http:HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'}),
+      observe:'body'
     }
-   }
-
   }
 
+  loginUser(data:Login): Observable<any>{
+    return this.http.post<any>(this.loginUrl+'login/',data)
+  }
+}
 
-// checkuser():Observable<{ name: string, role: string, email: string }>{
+ 
 
-//   const token = localStorage.getItem('token') as string
 
-//   return this.http.get<{ name: string, role: string, email: string }>(`${this.checkUrl}`,{
+ 
 
-//     headers:new HttpHeaders({token})
+

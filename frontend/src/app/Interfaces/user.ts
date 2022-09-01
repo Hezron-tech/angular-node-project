@@ -10,6 +10,7 @@ export interface Login{
   error:string
   message:string
   token:string
+  Role:string
   
 }
 

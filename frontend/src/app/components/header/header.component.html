@@ -9,11 +9,11 @@
         <ul class="list">
             
             <li routerLink="/">Home</li>
-            <li routerLink="/admin/dashboard">Admin</li>
-            <li routerLink="/user/user-dashboard">User</li>
-            <li routerLink="/auth/login">Login</li>
-            <li routerLink="/auth/register">Registration</li>
-            <li>Logout</li>
+            <li routerLink="/admin/dashboard" routerLinkActive="active" *ngIf="authService.isLoggedin()">Admin</li>
+            <li routerLink="/user/user-dashboard" *ngIf="authService.isLoggedin()">User</li>
+            <li routerLink="/auth/login" *ngIf="!authService.isLoggedin()">Login</li>
+            <li routerLink="/auth/register" *ngIf="!authService.isLoggedin()">Register</li>
+            <li (click)="logout()" *ngIf="authService.isLoggedin()">logout</li>
         </ul>
 
     </div>
