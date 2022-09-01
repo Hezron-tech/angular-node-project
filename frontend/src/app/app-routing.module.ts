@@ -6,6 +6,8 @@ const routes: Routes = [
 
 {path:'',component:HomeComponent},
 {path:'admin', loadChildren:()=> import('./Modules/admin/admin.module').then(mod=>mod.AdminModule)},
+{path:'user', loadChildren:()=> import('./Modules/user/user.module').then(mod=>mod.UserModule)},
+
 { path: 'auth', loadChildren: () => import('./Modules/auth/auth.module').then(m=>m.AuthModule)}]
 
 @NgModule({

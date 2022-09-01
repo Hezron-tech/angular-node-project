@@ -28,6 +28,8 @@ export class SignInComponent implements OnInit {
       (response)=>{
         console.log(response);
         response.token? localStorage.setItem('token',response.token): ''
+
+        this.redirect()
          
       },
       (error)=>console.log(error),
@@ -58,13 +60,13 @@ export class SignInComponent implements OnInit {
 
         if (response.Role === 'admin') {
 
-          this.router.navigate(['/projects'])
+          this.router.navigate(['/admin/dashboard'])
 
 
 
       } else {
 
-        this.router.navigate(['/user'])
+        this.router.navigate(['/user/user-dashboard'])
 
       }
 
