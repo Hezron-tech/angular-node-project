@@ -36,6 +36,7 @@ export class AddProjectComponent implements OnInit {
   }
 
   addProject(){
+    if(this.projectForms.valid){
    
     this.projectService.postProject(this.projectForms.value).subscribe(response=>{
       console.log(response);
@@ -45,6 +46,7 @@ export class AddProjectComponent implements OnInit {
       
     })
   }
+}
 
   allUsers(){
 

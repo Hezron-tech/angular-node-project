@@ -1,55 +1,22 @@
 <div class="container">
-<div class="projects">
-    <div class="row">
-        <div class="col-3">
-            <button class="btn btn-success"> view your project</button>
-        </div>
-        <div class="col-9">
-<div class="col">
-    <div class="container">
-        <div class="products" *ngIf="project.length; else noStudent">
-          <div>
-            <div class="display">
-              <div class="form-group">
-      
-              </div>
-              <h3>All Projects</h3>
-              <table class="table" border="1">
-                <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Enddate</th>
-                  <th>Email</th>
-                  <th>Actions</th>
-                </tr>
-                <tr *ngFor="let projects of project ">
-                  <td class="data"> {{projects.name}}</td>
-                  <td>{{projects.description}}</td>
-                  <td>{{projects.date}}</td>
-                  <td>{{projects.user_id}}</td>
-                  <td><button (click)="completeItem()" class="btn btn-danger">Complete </button></td>
-                </tr>
-              </table>
-            </div>
-          </div>
-        </div>
-      
-        <ng-template #noStudent>
-          <p>No Projects</p>
-        </ng-template>
-      
-      
-      </div>
-      
 
+  <h1>Welcome! Here is your project to work on</h1>
+
+  <table class="table mt-5">
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>End date</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let pro of proje">
+      <td>{{pro.name}}</td>
+      <td>{{pro.description}}</td>
+      <td>{{pro.date}}</td>
+      <button (click)="update(pro.id)" class="btn btn-success">Complete</button>
+    </tr>
+    
+  </table>
 </div>
+      
 
-
-
-
-        </div>
-    </div>
-</div>
-
-
-</div>

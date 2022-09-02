@@ -1,8 +1,22 @@
-.error{
-    color: red;
+*{
+    background-color: beige;
+}
+.containerr{
+    display: flex;
+    height: 100vh;
+    padding-left: 3rem;
+
 }
 
 
+.form-control{
+    border: none;
+}
+
+
+.error{
+    color: red;
+}
  input.ng-invalid.ng-touched{
     border-left:5px solid red ;
 }
@@ -14,4 +28,28 @@ textarea.ng-valid.ng-touched{
 }
 textarea.ng-invalid.ng-touched{
     border-left:5px solid red ;
+}
+
+img{
+    width: 50%;
+}
+
+form{
+
+    text-align: center;
+}
+p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+input{
+    border-radius: 20px;
+    padding: 10px;  
+}
+
+button{
+    margin-top: 2rem;
+    width: 150px;
+    border-radius: 20px;
 }

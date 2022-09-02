@@ -1,3 +1,17 @@
+.main{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.form-control{
+    border: none;
+}
+
+input{
+    border-radius: 20px;
+    padding: 10px;
+}
+
 .error{
     color: red;
 }
@@ -14,4 +28,12 @@ textarea.ng-valid.ng-touched{
 }
 textarea.ng-invalid.ng-touched{
     border-left:5px solid red ;
+}
+
+textarea {
+    border-radius: 5px;
+}
+
+p{
+    font-size: 20px;
 }

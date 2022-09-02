@@ -1,6 +1,6 @@
 import { Project } from './../../../Interfaces/project';
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AllProjects } from 'src/app/Interfaces/project';
 import { ProjectsService } from 'src/app/Services/projects.service';
 
@@ -10,7 +10,9 @@ import { ProjectsService } from 'src/app/Services/projects.service';
   styleUrls: ['./view-project.component.css'],
 })
 export class ViewProjectComponent implements OnInit {
-  project: AllProjects[] = [];
+   project: AllProjects[] = [];
+  
+  filter=''
   constructor(private projectService: ProjectsService) {}
 
   ngOnInit(): void {

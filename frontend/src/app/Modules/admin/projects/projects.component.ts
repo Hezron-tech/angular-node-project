@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Project } from 'src/app/Interfaces/project';
 
 @Component({
   selector: 'app-projects',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
-  // project:Project[]=[]
-  constructor() { }
+  @Input() project:Project[]=[]
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
 
+
+  add(){
+    this.router.navigate(['admin/add-project'])
+  }
+  all(){
+    this.router.navigate(['admin/view-project'])
+  }
 }

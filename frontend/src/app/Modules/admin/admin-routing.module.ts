@@ -5,6 +5,8 @@ import { AddProjectComponent } from './add-project/add-project.component';
 import { ProjectsComponent } from './projects/projects.component';
 
 const routes: Routes = [
+
+  
   {path: 'dashboard', component: ProjectsComponent},
 
   {

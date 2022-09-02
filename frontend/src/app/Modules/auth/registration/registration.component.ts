@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/Interfaces/user';
 import { RegisterService } from 'src/app/Services/register.service';
@@ -20,8 +20,8 @@ export class RegistrationComponent implements OnInit {
 
     this.addForms = this.fb.group({
       username:[null,[Validators.required]],
-      email: [null,[Validators.required,Validators.email]],
-      password: [null,[Validators.required, Validators.minLength(6)] ],
+      email: [null,[Validators.required,Validators.pattern('^[A-Za-z0-9._%+-]+@thejitu.com$'),]],
+      password: [null,[Validators.required, Validators.minLength(6), this.checkPassword] ],
      
     });
   }
@@ -52,5 +52,14 @@ export class RegistrationComponent implements OnInit {
    );
     }
   }
+
+
+  checkPassword(control:FormControl){
+    const value=control.value
+     const special=/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"]+/.test(value)
+     return !special? {special:true} :null
+ 
+     
+   }
 
 }

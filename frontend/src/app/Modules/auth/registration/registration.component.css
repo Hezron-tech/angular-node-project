@@ -1,0 +1,64 @@
+*{
+    background-color: beige;
+}
+
+img{
+    width: 50%;
+}
+
+form{
+
+    text-align: center;
+}
+p{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+input{
+    border-radius: 20px;
+    padding: 10px;  
+}
+
+button{
+    margin-top: 2rem;
+    width: 150px;
+    border-radius: 20px;
+    background-color: brown;
+    color: white;
+}
+
+.error{
+    color: red;
+}
+ input.ng-invalid.ng-touched{
+    border-left:5px solid red ;
+}
+input.ng-valid.ng-touched{
+    border-left:5px solid green ;
+}
+textarea.ng-valid.ng-touched{
+    border-left:5px solid green ;
+}
+textarea.ng-invalid.ng-touched{
+    border-left:5px solid red ;
+}
+
+.containerr{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    height: 100vh;
+    
+}
+
+.reg-image{
+    margin-left: 3rem;
+}
+
+h5{
+    margin-top: 20px;
+}
+.reg-image img{
+    width: 100%;
+}

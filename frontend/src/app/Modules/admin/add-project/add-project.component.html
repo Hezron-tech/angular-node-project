@@ -9,7 +9,7 @@
 
        <div *ngIf="!projectForms.get('name')!.valid && projectForms.get('name')!.touched">
         <p class="error" *ngIf="projectForms.get('name')!.errors!['required']">
-          *Name is required.
+          *Title is required.
         </p> 
       </div>
       
@@ -17,7 +17,7 @@
 
 <div class="form-control">
         <p>Description</p>
-        <textarea formControlName="description" name="" id="" cols="30" rows="10" name="description">
+        <textarea formControlName="description" name="" id="" cols="30" rows="4" name="description">
           <div *ngIf="!projectForms.get('description')!.valid && projectForms.get('description')!.touched">
             <p class="error" *ngIf="projectForms.get('description')!.errors!['required']">
               *description is required.

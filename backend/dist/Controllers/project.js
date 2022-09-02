@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProject = exports.updateProject = exports.getProject = exports.getProjects = exports.createProject = void 0;
+exports.deleteProject = exports.updateComplete = exports.updateProject = exports.getProject = exports.getProjects = exports.createProject = void 0;
 const uuid_1 = require("uuid");
 const config_1 = require("../Config/config");
 const mssql_1 = __importDefault(require("mssql"));
@@ -66,12 +66,12 @@ const getProjects = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
 exports.getProjects = getProjects;
 const getProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const id = req.params.id;
+        const user_id = req.params.id;
         const pool = yield mssql_1.default.connect(config_1.sqlConfig);
         const project = yield pool
             .request()
-            .input("user_id", mssql_1.default.VarChar, id)
-            .execute("getProject");
+            .input("user_id", mssql_1.default.VarChar, user_id)
+            .execute("usersProject");
         const { recordset } = project;
         if (!project.recordset[0]) {
             res.json({ message: "Project Not Found" });
@@ -113,6 +113,29 @@ const updateProject = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     }
 });
 exports.updateProject = updateProject;
+const updateComplete = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const id = req.params.id;
+        const pool = yield mssql_1.default.connect(config_1.sqlConfig);
+        const projects = yield pool
+            .request()
+            .input('id', mssql_1.default.VarChar, id)
+            .execute('getProject');
+        if (!projects.recordset[0]) {
+            res.json({ message: 'Project Not Found' });
+        }
+        else {
+            yield pool.request()
+                .input('id', mssql_1.default.VarChar, id)
+                .execute('completeProject');
+            res.json({ message: 'Project Updated ...' });
+        }
+    }
+    catch (error) {
+        res.json({ error });
+    }
+});
+exports.updateComplete = updateComplete;
 const deleteProject = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;

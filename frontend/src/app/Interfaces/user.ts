@@ -14,11 +14,11 @@ export interface Login{
   
 }
 
-// export interface Root {
-//   user_id: string
-//   username: string
-//   email: string
-//   password: string
-//   Role: string
-//   assigned: string
-// }
+export interface NewProject {
+  id: string
+  name: string
+  description: string
+  date: string
+  user_id: string
+  issent: string
+}

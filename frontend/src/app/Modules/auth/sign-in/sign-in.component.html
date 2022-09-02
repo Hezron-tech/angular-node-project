@@ -1,16 +1,22 @@
-<div class="container">
+<div class="containerr pt-5">
+
+    <div class="image">
+        <img src="/assets/undraw_enter_uhqk.svg" alt="">
+    </div>
 
     <form #form="ngForm" (ngSubmit)="onSubmit()">
+
+        <h2>Enter your Details to login</h2>
     
         <div class="form-control">
             <p>Email</p>
-            <input type="email" ngModel name="email" required email>
-            <!-- <p class="error" ngIf="!email.valid && email.touched"> *Please enter valid email!!</p> -->
+            <input type="email" ngModel name="email" required email #email="ngModel">
+            <p class="error" *ngIf="!email.valid && email.touched"> *Please enter valid email!!</p>
             <!-- <p class="error" *ngIf="!email.valid && email.touched>*Please enter valid email!!</p> -->
         </div>
 
         <div class="form-control">
-            <p>Email</p>
+            <p>Password</p>
             <input type="password" ngModel name="password" required>
            
         </div>

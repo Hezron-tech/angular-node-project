@@ -9,7 +9,7 @@ import { Login } from '../Interfaces/user';
 export class LoginService {
 
   loginUrl='http://localhost:5000/users/'
-  checkuser='http://localhost:5000/users/checkuser'
+ 
 
   private httpOptions:any
   

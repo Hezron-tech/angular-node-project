@@ -11,6 +11,7 @@ interface project {
   date: string;
   user_id: string;
   issent: string;
+  completed:string
 }
 
 const SendEmail = async () => {

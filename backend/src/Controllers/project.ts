@@ -64,12 +64,12 @@ export const getProjects: RequestHandler = async (req, res) => {
 
 export const getProject: RequestHandler<{ id: string }> = async (req, res) => {
   try {
-    const id = req.params.id;
+    const user_id = req.params.id;
     const pool = await mssql.connect(sqlConfig);
     const project = await pool
       .request()
-      .input("user_id", mssql.VarChar, id)
-      .execute("getProject");
+      .input("user_id", mssql.VarChar, user_id)
+      .execute("usersProject");
     const { recordset } = project;
     if (!project.recordset[0]) {
       res.json({ message: "Project Not Found" });
@@ -115,6 +115,38 @@ export const updateProject: RequestHandler<{ id: string }> = async (
     res.json({ error });
   }
 };
+
+
+export const updateComplete: RequestHandler<{ id: string }> = async (
+  req,
+  res,
+) => {
+  try {
+    const id =req.params.id
+    const pool = await mssql.connect(sqlConfig)
+  
+      const projects = await pool
+      .request()
+      .input('id', mssql.VarChar, id)
+      .execute('getProject')
+      if(!projects.recordset[0]){
+         res.json({ message: 'Project Not Found' })
+      }else{
+
+        await pool.request()
+          .input('id', mssql.VarChar, id)
+          .execute('completeProject')
+          res.json({message:'Project Updated ...'})
+      }
+ 
+
+  } catch (error:any) {
+      res.json({ error })
+  }
+}
+
+
+
 
 export const deleteProject: RequestHandler<{ id: string }> = async (
   req,

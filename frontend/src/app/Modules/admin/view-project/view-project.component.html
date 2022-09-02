@@ -1,16 +1,19 @@
 <div class="container">
-  <div class="products" *ngIf="project.length; else noStudent">
+  <div class="products" *ngIf="project.length; else noProject">
     <div>
       <div class="display">
         <div class="form-group">
 
         </div>
         <h3>All Projects</h3>
+        <div class="search">
+          <input  type="text" [(ngModel)]="filter"  placeholder="search Project">
+      </div>
         <table class="table" border="1">
           <tr>
             <th>Name</th>
             <th>Description</th>
-            <th>Enddate</th>
+            <th>End Date</th>
             <th>Email</th>
             <th>Actions</th>
           </tr>
@@ -26,7 +29,7 @@
     </div>
   </div>
 
-  <ng-template #noStudent>
+  <ng-template #noProject>
     <p>No Projects</p>
   </ng-template>
 

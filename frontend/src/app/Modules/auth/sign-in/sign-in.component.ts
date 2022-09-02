@@ -21,9 +21,13 @@ export class SignInComponent implements OnInit {
 
   onSubmit(){
     console.log(this.form.value);
+
+    if(this.form.valid){
     this.loginService.loginUser(this.form.value).subscribe(response=>{
 
       localStorage.setItem('token',response.token)
+
+      localStorage.setItem('user_id',response.user.user_id)
 
       console.log(response);
       
@@ -39,9 +43,9 @@ export class SignInComponent implements OnInit {
       }
       
      
-      
+     
     })
-
+  }
 
 
 

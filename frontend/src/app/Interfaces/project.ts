@@ -14,4 +14,5 @@ export interface AllProjects{
     date: string
     user_id: string
     issent: string
+    completed:number
   }

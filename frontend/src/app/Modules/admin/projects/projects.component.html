@@ -1,31 +1,17 @@
 <div class="container">
 
-    <div class="row mt-5">
-        <div class="col-4">
-        <button class="btn btn-success">Add Project</button>
+  <div class="section">
+   
+        <button class="btn btn-success" (click)="add()">Add projects</button>
+       
+     
+        <button class="btn btn-success" (click)="all()">All projects</button>
+       
+       
+        <!-- <button class="btn btn-success" (click)="completed()">Complete projects</button> -->
 
-        </div>
-        <div class="col-8">col-8</div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-4">
-
-            <button class="btn btn-success">View Projects</button>
-        </div>
-        <div class="col-8">col-8</div>
-    </div>
-
-    <div class="row mt-5">
-        <div class="col-4">
-
-            <button class="btn btn-success">Completed Projects</button>
-        </div>
-        <div class="col-8">col-8</div>
-    </div>
-
-
-    <button class="btn btn-success mt-5">LogOut</button>
+       <router-outlet></router-outlet>
+  </div>
 
 
 

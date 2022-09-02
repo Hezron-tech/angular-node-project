@@ -8,13 +8,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ErrorComponent } from './components/error/error.component';
+import { SearchPipe } from './Pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    ErrorComponent
+    ErrorComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
